@@ -1,5 +1,6 @@
 import cv2
 import mediapipe as mp
+import numpy as np
 
 # Access MediaPipe's hand tracking module and visulaization module
 mp_hands = mp.solutions.hands
@@ -8,12 +9,8 @@ mp_draw = mp.solutions.drawing_utils
 # Create a instance of hand object
 hands = mp_hands.Hands()
 
-
 # Access webcam
 cap = cv2.VideoCapture(0)
-
-# Load a random image of a cat (with no hands)
-cat_frame = cv2.imread('cat_image.jpeg')
 
 while True:
     success, frame = cap.read()
