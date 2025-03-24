@@ -12,6 +12,10 @@ hands = mp_hands.Hands()
 # Access webcam
 cap = cv2.VideoCapture(0)
 
+# Initialize canvas
+canvas = np.zeros((480, 640, 3), dtype=np.uint8)
+prev_x, prev_y = None, None
+
 while True:
     success, frame = cap.read()
     if not success:
