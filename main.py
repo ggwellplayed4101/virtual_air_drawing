@@ -1,4 +1,13 @@
 import cv2
+import mediapipe as mp
+
+# Access MediaPipe's hand tracking module and visulaization module
+mp_hands = mp.solutions.hands
+mp_draw = mp.solution.drawing_utils
+
+# Create a instance of hand object
+hands = mp_hands.Hands()
+
 
 # Access webcam
 cap = cv2.VideoCapture(0)
