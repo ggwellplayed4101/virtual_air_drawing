@@ -27,8 +27,10 @@ while True:
     if results.multi_hand_landmarks:
         
         for hand_landmarks in results.multi_hand_landmarks:
-            # Get index finger tip 
+            # Get height, width, channel of the frame 
             h, w, c = frame.shape
+
+            # Store info about the tip of index finger
             index_tip =  hand_landmarks.landmark[
                 mp_hands.HandLandmark.INDEX_FINGER_TIP]
             cx, cy = int(index_tip.x * w), int(index_tip.y * h)
