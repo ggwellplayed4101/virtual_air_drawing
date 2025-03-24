@@ -23,8 +23,18 @@ while True:
     frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     results =  hands.process(frame_rgb)
 
+    # Loop for detected hands
     if results.multi_hand_landmarks:
+        
         for hand_landmarks in results.multi_hand_landmarks:
+            # Get index finger tip 
+            h, w, c = frame.shape
+            index_tip =  hand_landmarks.landmark[
+                mp_hands.HandLandmark.INDEX_FINGER_TIP]
+            cx, cy = int(index_tip.x * w), int(index_tip.y * h)
+
+            # Draw circle at the top
+            cv2.circle(frame, (cx, cy), 10, (255, 0, 0), cv2.FILLED)
             mp_draw.draw_landmarks(frame, hand_landmarks,
                                    mp_hands.HAND_CONNECTIONS)
 
